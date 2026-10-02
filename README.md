@@ -8,7 +8,7 @@ Developer resources, API documentation, and sample code for integrating **Lion F
 
 There are **three main ways** to communicate with Lion Fingerprint machines:
 
-### 1. Direct LAN HTTP REST API
+### 1. Direct LAN HTTP REST API  - Lion_Cloud_API.html
 
 Communicate directly with a fingerprint machine through its local HTTP REST API.
 
@@ -16,7 +16,7 @@ Communicate directly with a fingerprint machine through its local HTTP REST API.
 * Suitable for local attendance systems and real-time device management.
 * No internet connection is required.
 
-### 2. Retrieve Data from Lion Cloud
+### 2. Retrieve Data from Lion Cloud  - Lion_Direct_API.html
 
 Retrieve attendance and device data through the **Lion Cloud API**.
 
@@ -24,7 +24,7 @@ Retrieve attendance and device data through the **Lion Cloud API**.
 * Applications can retrieve synchronized data remotely.
 * Suitable for centralized attendance management and multi-device deployments.
 
-### 3. Device → Custom Server Synchronization
+### 3. Device → Custom Server Synchronization - 
 
 Configure a custom **Sync URL** in the fingerprint machine.
 
