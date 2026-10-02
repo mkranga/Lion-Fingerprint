@@ -3,7 +3,9 @@
 Developer resources, API documentation, and sample code for integrating **Lion Fingerprint Time Recorder & Cloud Attendance Machines**.
 
 <img width="598" height="624" alt="Lion F1 Fingerprint Time Recorder" src="https://github.com/user-attachments/assets/edc74354-4846-41be-9a58-ea0963873d4d" />
+
 <a href="https://lionts.com.lk/fingerprint-machines-c-1/">Lion Fingerprint machines product range</a>
+
 ## Communication Methods
 
 There are **three main ways** to communicate with Lion Fingerprint machines:
