@@ -3,12 +3,12 @@
 Developer resources, API documentation, and sample code for integrating **Lion Fingerprint Time Recorder & Cloud Attendance Machines**.
 
 <img width="598" height="624" alt="Lion F1 Fingerprint Time Recorder" src="https://github.com/user-attachments/assets/edc74354-4846-41be-9a58-ea0963873d4d" />
-
+<a href="https://lionts.com.lk/fingerprint-machines-c-1/">Lion Fingerprint machines product range</a>
 ## Communication Methods
 
 There are **three main ways** to communicate with Lion Fingerprint machines:
 
-### 1. Direct LAN HTTP REST API
+### 1. Direct LAN HTTP REST API  - Lion_Cloud_API.html
 
 Communicate directly with a fingerprint machine through its local HTTP REST API.
 
@@ -16,7 +16,7 @@ Communicate directly with a fingerprint machine through its local HTTP REST API.
 * Suitable for local attendance systems and real-time device management.
 * No internet connection is required.
 
-### 2. Retrieve Data from Lion Cloud
+### 2. Retrieve Data from Lion Cloud  - Lion_Direct_API.html
 
 Retrieve attendance and device data through the **Lion Cloud API**.
 
@@ -24,7 +24,7 @@ Retrieve attendance and device data through the **Lion Cloud API**.
 * Applications can retrieve synchronized data remotely.
 * Suitable for centralized attendance management and multi-device deployments.
 
-### 3. Device → Custom Server Synchronization
+### 3. Device → Custom Server Synchronization - 
 
 Configure a custom **Sync URL** in the fingerprint machine.
 
@@ -64,10 +64,10 @@ Choose the communication method that best fits your application:
 | ------------------- | ----------------: | ----------------: | ------------: |
 | Direct LAN REST API |                No |               Yes |            No |
 | Lion Cloud API      |               Yes |                No |            No |
-| Custom Sync URL     |               Yes |                No |           Yes |
+| Custom Sync URL     |               No  |                No |           Yes |
 
 ## Purpose
 
 The goal of this repository is to provide developers with the information and sample code required to integrate **Lion Fingerprint Time Recorder machines** into their own attendance, HR, payroll, ERP, and other software systems.
 
-> **Note:** API availability and device functionality may vary depending on the Lion Fingerprint model and firmware version.
+> **Note:** API availability and device functionality may vary depending on the Lion Fingerprint model and firmware version. contact Lion technology solution for further support and assistance.
