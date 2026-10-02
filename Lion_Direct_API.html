@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lion Fingerprint Machine API Documentation</title>
+<style>
+body{
+margin:0;
+font-family:Segoe UI,Arial,sans-serif;
+background:#f5f3ff;
+color:#333;
+display:flex;
+}
+.sidebar{
+width:260px;
+background:#5b21b6;
+color:white;
+height:100vh;
+position:fixed;
+padding:25px;
+overflow:auto;
+box-shadow:0 0 20px rgba(0,0,0,.15);
+}
+.sidebar h1{
+font-size:22px;
+margin-bottom:30px;
+}
+.sidebar a{
+display:block;
+color:#ddd;
+text-decoration:none;
+padding:10px;
+border-radius:8px;
+margin:5px 0;
+}
+.sidebar a:hover{
+background:rgba(255,255,255,.15);
+color:white;
+}
+.content{
+margin-left:310px;
+padding:40px;
+max-width:1000px;
+}
+.hero{
+background:linear-gradient(135deg, #7c3aed, #9333ea69);
+color:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(91,33,182,.3);
+}
+.card{
+background:white;
+padding:25px;
+margin-top:25px;
+border-radius:16px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+h2{
+color:#5b21b6;
+border-bottom:2px solid #e5e7eb;
+padding-bottom:10px;
+}
+pre{
+background:#1f2937;
+color:#d1d5db;
+padding:15px;
+border-radius:12px;
+overflow:auto;
+}
+code{color:#c084fc}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+th{
+background:#ede9fe;
+}
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:left;
+}
+.badge{
+display:inline-block;
+padding:6px 12px;
+background:#ede9fe;
+color:#5b21b6;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<h1>Lion FP API</h1>
+
+<a href="#overview">Overview</a>
+<a href="#quick">Quick Start</a>
+<a href="#stats">Statistics</a>
+<a href="#auth">Authentication</a>
+<a href="#attendance">Attendance</a>
+<a href="#settings">Settings</a>
+<a href="#actions">Actions</a>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<div id="logo" style="width: 50px;float: right;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 100"><path d="m32.064 18.058.344-5.187L42.1 7.31l9.731 5.562.344 5.187A159 159 0 0 0 42.1 12.343c-3.469 2.16-6.607 3.746-10.036 5.715m0 35.808.344 5.186 9.692 5.562 9.731-5.562.337-5.186c-3.435 2.074-6.924 4.129-10.075 5.714-3.469-2.16-6.613-3.746-10.036-5.714m-5.945 10.808-4.632 2.358-9.738-5.483-.198-11.205 4.281-2.946c-.026 4.016-.007 8.06.238 11.581 3.634 1.87 6.6 3.766 10.042 5.695M32.05 80.72l.343-5.186 9.692-5.563 9.732 5.563.343 5.186a159 159 0 0 0-10.075-5.714c-3.468 2.16-6.606 3.746-10.035 5.714M67.112 4.527l4.671-2.272 9.633 5.661-.014 11.212-4.334 2.86c.1-4.016.159-8.06-.02-11.58-3.593-1.943-6.527-3.892-9.936-5.887m-50.038 0-4.671-2.266-9.64 5.668.014 11.211 4.334 2.861c-.106-4.017-.159-8.06.02-11.581 3.594-1.943 6.527-3.892 9.936-5.887m45.024 26.136-4.67-2.273-9.633 5.662.013 11.212 4.334 2.86a159 159 0 0 1 .02-11.581c3.594-1.942 6.527-3.891 9.936-5.887m-39.897 0 4.67-2.272 9.633 5.662-.013 11.211-4.334 2.86a159 159 0 0 0-.02-11.58c-3.594-1.943-6.527-3.892-9.936-5.887m35.801 34.024 4.631 2.358 9.738-5.483.199-11.205-4.281-2.946c.026 4.016.006 8.06-.238 11.581-3.634 1.87-6.6 3.766-10.042 5.695M32.064 86.106l.344 5.186 9.692 5.563 9.731-5.563.344-5.186C48.739 88.18 45.25 90.235 42.1 91.82c-3.469-2.16-6.607-3.746-10.036-5.715" fill="#80a"/></svg>
+</div>
+<h1  style="margin: 0px;">Lion Fingerprint Machine</h1>
+<p>Local Network API Documentation</p>
+<span class="badge">REST API</span>
+<span class="badge">mDNS</span>
+<span class="badge">Attendance API</span>
+</div>
+
+<div class="card" id="overview">
+<h2>Overview</h2>
+<p>This document explains communication with the Lion Fingerprint Machine over the local network.</p>
+
+<p><b>Recommendation:</b> Use <code>lionfp.local</code> only for discovery. Use the returned IP address for faster communication.</p>
+</div>
+
+<div class="card" id="quick">
+<h2>Quick Start</h2>
+
+<h3>Step 1 — Discover Device</h3>
+
+<pre>GET http://lionfp.local/statistics</pre>
+
+<h3>Step 2 — Login</h3>
+
+<pre>
+POST http://192.168.1.100/login
+
+{
+ "username":"admin",
+ "password":"admin"
+}
+</pre>
+
+<h3>Step 3 — Get Attendance</h3>
+
+<pre>
+curl -X POST "http://192.168.1.100/attendance" \
+-H "authkey: YOUR_AUTH_KEY"
+</pre>
+
+</div>
+
+<div class="card" id="stats">
+<h2>Statistics API</h2>
+
+<pre>GET /statistics</pre>
+
+<table>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+
+<tr><td>profilecount</td><td>Stored fingerprint count</td></tr>
+<tr><td>cloudStatus</td><td>Cloud/WiFi status</td></tr>
+<tr><td>ip</td><td>Device IP address</td></tr>
+<tr><td>memory</td><td>Memory usage</td></tr>
+<tr><td>did</td><td>Unique device ID</td></tr>
+
+</table>
+
+</div>
+
+<div class="card" id="auth">
+<h2>Authentication</h2>
+
+<pre>
+POST /login
+</pre>
+
+<pre>
+{
+"authkey":"1234567890"
+}
+</pre>
+
+</div>
+
+<div class="card" id="attendance">
+<h2>Attendance API</h2>
+
+<pre>
+POST /attendance
+
+{
+"from":1674518400,
+"to":1674604800
+}
+</pre>
+
+</div>
+
+<div class="card" id="settings">
+<h2>Settings API</h2>
+
+<pre>
+POST /settings
+
+["ssid1","MyNetwork"]
+</pre>
+
+</div>
+
+<div class="card" id="actions">
+<h2>Device Actions</h2>
+
+<table>
+
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+
+<tr><td>restart</td><td>Restart device</td></tr>
+<tr><td>sync</td><td>Cloud synchronization</td></tr>
+<tr><td>connect</td><td>Connect WiFi</td></tr>
+<tr><td>disconnect</td><td>Disconnect WiFi</td></tr>
+<tr><td>factory</td><td>Factory reset</td></tr>
+
+</table>
+
+</div>
+
+</div>
+</body>
+</html>

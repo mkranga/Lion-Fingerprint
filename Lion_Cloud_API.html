@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lion Fingerprint Cloud API Documentation</title>
+<style>
+body{margin:0;font-family:Segoe UI,Arial;background:#f5f3ff;color:#333;display:flex}
+.sidebar{width:260px;background:#5b21b6;color:#fff;height:100vh;position:fixed;padding:25px;overflow:auto;box-shadow:0 0 20px rgba(0,0,0,.2)}
+.sidebar h1{font-size:22px}
+.sidebar a{display:block;color:#ddd;text-decoration:none;padding:10px;border-radius:8px;margin:6px 0}
+.sidebar a:hover{background:rgba(255,255,255,.15);color:#fff}
+.content{margin-left:310px;padding:40px;max-width:1100px}
+.hero{background:linear-gradient(135deg,#6d28d9,#9333ea);padding:40px;border-radius:20px;color:white;box-shadow:0 10px 30px rgba(91,33,182,.3)}
+.card{background:white;padding:25px;border-radius:16px;margin-top:25px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+h2{color:#5b21b6;border-bottom:2px solid #e5e7eb;padding-bottom:10px}
+pre{background:#1f2937;color:#d1d5db;padding:15px;border-radius:12px;overflow:auto}
+code{color:#c084fc}
+table{width:100%;border-collapse:collapse}
+th{background:#ede9fe}
+th,td{padding:12px;border:1px solid #ddd}
+.badge{display:inline-block;padding:6px 12px;border-radius:20px;background:#ede9fe;color:#5b21b6;font-size:12px;margin-right:8px;font-weight:bold}
+.warning{padding:15px;background:#fef3c7;border-radius:12px;border-left:5px solid orange}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<h1>Lion Cloud API</h1>
+<a href="#overview">Overview</a>
+<a href="#architecture">Architecture</a>
+<a href="#attendance">Attendance API</a>
+<a href="#formats">Response Formats</a>
+<a href="#php">PHP Example</a>
+</div>
+
+<div class="content">
+
+<div class="hero">
+    <div id="logo" style="width: 50px;float: right;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 100"><path d="m32.064 18.058.344-5.187L42.1 7.31l9.731 5.562.344 5.187A159 159 0 0 0 42.1 12.343c-3.469 2.16-6.607 3.746-10.036 5.715m0 35.808.344 5.186 9.692 5.562 9.731-5.562.337-5.186c-3.435 2.074-6.924 4.129-10.075 5.714-3.469-2.16-6.613-3.746-10.036-5.714m-5.945 10.808-4.632 2.358-9.738-5.483-.198-11.205 4.281-2.946c-.026 4.016-.007 8.06.238 11.581 3.634 1.87 6.6 3.766 10.042 5.695M32.05 80.72l.343-5.186 9.692-5.563 9.732 5.563.343 5.186a159 159 0 0 0-10.075-5.714c-3.468 2.16-6.606 3.746-10.035 5.714M67.112 4.527l4.671-2.272 9.633 5.661-.014 11.212-4.334 2.86c.1-4.016.159-8.06-.02-11.58-3.593-1.943-6.527-3.892-9.936-5.887m-50.038 0-4.671-2.266-9.64 5.668.014 11.211 4.334 2.861c-.106-4.017-.159-8.06.02-11.581 3.594-1.943 6.527-3.892 9.936-5.887m45.024 26.136-4.67-2.273-9.633 5.662.013 11.212 4.334 2.86a159 159 0 0 1 .02-11.581c3.594-1.942 6.527-3.891 9.936-5.887m-39.897 0 4.67-2.272 9.633 5.662-.013 11.211-4.334 2.86a159 159 0 0 0-.02-11.58c-3.594-1.943-6.527-3.892-9.936-5.887m35.801 34.024 4.631 2.358 9.738-5.483.199-11.205-4.281-2.946c.026 4.016.006 8.06-.238 11.581-3.634 1.87-6.6 3.766-10.042 5.695M32.064 86.106l.344 5.186 9.692 5.563 9.731-5.563.344-5.186C48.739 88.18 45.25 90.235 42.1 91.82c-3.469-2.16-6.607-3.746-10.036-5.715" fill="#80a"/></svg>
+</div>
+<h1  style="margin: 0px;">Lion Fingerprint Machine</h1>
+
+<h2 style="color:white;border:none">Cloud API Documentation</h2>
+<span class="badge">Cloud Sync</span>
+<span class="badge">Attendance API</span>
+<span class="badge">REST API</span>
+</div>
+
+<div class="card" id="overview">
+<h2>Overview</h2>
+<p>This documentation explains how to retrieve attendance records from the Lion Fingerprint cloud server.</p>
+
+<div class="warning">
+<b>Important:</b> The endpoint uses <b>Sync.php</b> with a capital <b>S</b>. The URL is case-sensitive.
+</div>
+
+<pre>https://lionts.com.lk/cloud/api/Sync.php</pre>
+
+</div>
+
+<div class="card" id="architecture">
+<h2>Cloud Architecture</h2>
+
+<ul>
+<li><b>Device Synchronization</b> — Devices push attendance data, profiles and settings.</li>
+<li><b>Data Storage</b> — Cloud database stores synchronized data.</li>
+<li><b>API Endpoint</b> — Single endpoint provides flexible data retrieval.</li>
+</ul>
+
+</div>
+
+<div class="card" id="attendance">
+<h2>Get Attendance Logs</h2>
+
+<pre>
+GET /cloud/api/Sync.php?duid=&lt;device-id&gt;&dt=&lt;unix-timestamp&gt;&type=&lt;format-type&gt;
+</pre>
+
+<table>
+
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+
+<tr><td>duid</td><td>String</td><td>Yes</td><td>Device Unique Identifier</td></tr>
+<tr><td>dt</td><td>Integer</td><td>Yes</td><td>Unix timestamp in seconds</td></tr>
+<tr><td>type</td><td>Integer</td><td>Yes</td><td>Response type (0,1,2,3)</td></tr>
+
+</table>
+
+</div>
+
+<div class="card" id="formats">
+
+<h2>Response Formats</h2>
+
+<h3>Type 3 Example</h3>
+
+<pre>
+curl "https://lionts.com.lk/cloud/api/Sync.php?duid=5371846764460&dt=1753844637&type=3"
+</pre>
+
+<h3>Response</h3>
+
+<pre>
+101,1674520015,1
+102,1674520305,1
+103,1674523920,1
+</pre>
+
+<p>Contains Unix timestamps directly from the fingerprint device.</p>
+
+</div>
+
+<div class="card" id="php">
+
+<h2>Complete PHP Integration Example</h2>
+
+<pre>
+&lt;?php
+
+$CLOUD_SERVER="https://lionts.com.lk";
+$DEVICE_DUID="LION8045090804509";
+
+$days=7;
+$timestamp=time()-($days*86400);
+
+$url=sprintf(
+"%s/cloud/api/Sync.php?duid=%s&dt=%d&type=0",
+$CLOUD_SERVER,
+urlencode($DEVICE_DUID),
+$timestamp
+);
+
+$response=file_get_contents($url);
+
+if($response===false){
+die("Failed to fetch attendance");
+}
+
+$records=json_decode($response,true);
+
+foreach($records as $batch){
+echo $batch['cdate'];
+echo $batch['logdata'];
+}
+
+?&gt;
+</pre>
+
+</div>
+
+</div>
+</body>
+</html>
